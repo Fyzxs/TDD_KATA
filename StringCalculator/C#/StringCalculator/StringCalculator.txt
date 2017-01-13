@@ -1,0 +1,16 @@
+String Calculator Kata
+
+Takes a string of numbers, sums them, returns the result.
+
+Test  #1: Empty string returns zero
+Test  #2: Single number returns the value
+Test  #3: Two numbers, Comma Delimited
+Test  #4: Two numbers, NewLine Delimited
+Test  $5: Three numbers, both delimiter
+Test  #6: unknown numbers, mixed delimiter
+Test  #7: Configurable Delimiter: //;\n1;2;3
+Test  #8: Negatives Throw; show all/only negatives in exception message
+//Stop here unless good on time (<30 minutes)
+Test  #9: Ignore >1000
+Test #10: Multiple Configued Delimiters
+Test #11: Multiple congfigured Delimiters with length > 1
