@@ -2,7 +2,7 @@
 
 namespace BowlingGame7
 {
-    public class BowlingGame
+    public class BowlingGame : GameScoring.IScoreEngine
     {
         private const int StepOneThrow = 1;
         private const int StepFrame = 2;
@@ -21,7 +21,7 @@ namespace BowlingGame7
 
         private int _score;
 
-        public void Game(int[] throws)
+        public int InternalScore(int[] throws)
         {
             int score = 0;
             for (int frame = 0, ptrRoll = 0; frame < Frames; frame++)
@@ -50,5 +50,10 @@ namespace BowlingGame7
         private bool IsStrike(int ptrRoll, int[] throws) => AllPins == throws[ptrRoll];
 
         private bool IsSpare(int ptrRoll, int[] throws) => AllPins == throws[ptrRoll] + throws[ptrRoll];
+
+        public int Score(int[] values)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -17,25 +17,19 @@ namespace BowlingGame7
         [TestMethod]
         public void TwoAndTwo()
         {
-            _g.Game(new []{2, 2});
-
-            Assert.AreEqual(4, _g.Score());
+            Assert.AreEqual(4, _g.Score(new[] { 2, 2 }));
         }
 
         [TestMethod]
         public void TwoAndTwoAndTwo()
         {
-            _g.Game(new[] { 2, 2, 2 });
-
-            Assert.AreEqual(6, _g.Score());
+            Assert.AreEqual(6, _g.Score(new[] { 2, 2, 2 }));
         }
 
         [TestMethod]
         public void BustWithThirty()
         {
-            _g.Game(new []{10, 10, 2});
-
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _g.Score());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _g.Score(new[] { 10, 10, 2 }));
         }
     }
 }

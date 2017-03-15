@@ -16,7 +16,7 @@ namespace BowlingGame7
         [TestMethod]
         public void GutterGame()
         {
-            _g.Game(new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+            _g.InternalScore(new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
 
             Assert.AreEqual(0, _g.Score());
         }
@@ -24,14 +24,14 @@ namespace BowlingGame7
         [TestMethod]
         public void AllSinglePin()
         {
-            _g.Game(new[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
+            _g.InternalScore(new[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
             Assert.AreEqual(20, _g.Score());
         }
 
         [TestMethod]
         public void SingleSpare()
         {
-            _g.Game(new[] { 5, 5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+            _g.InternalScore(new[] { 5, 5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
 
             Assert.AreEqual(18, _g.Score());
         }
@@ -39,7 +39,7 @@ namespace BowlingGame7
         [TestMethod]
         public void SingleStrike()
         {
-            _g.Game(new[] { 10, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+            _g.InternalScore(new[] { 10, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
 
             Assert.AreEqual(24, _g.Score());
         }
@@ -47,7 +47,7 @@ namespace BowlingGame7
         [TestMethod]
         public void PerfectGame()
         {
-            _g.Game(new[] { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 });
+            _g.InternalScore(new[] { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 });
 
             Assert.AreEqual(300, _g.Score());
         }
