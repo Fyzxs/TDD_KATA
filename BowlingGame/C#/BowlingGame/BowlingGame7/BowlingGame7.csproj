@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackJackGame.cs" />
     <Compile Include="BowlingGameTests.cs" />
     <Compile Include="BowlingGame.cs" />
     <Compile Include="BlackjackGameTests.cs" />

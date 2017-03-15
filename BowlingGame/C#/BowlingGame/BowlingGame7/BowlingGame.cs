@@ -8,48 +8,47 @@ namespace BowlingGame7
         private const int StepFrame = 2;
         private const int Frames = 10;
         private const int AllPins = 10;
-        private const int MaxThrows = 21;
-        private delegate int Scoring(int ptr, BowlingGame game);
+        private delegate int Scoring(int ptr, int[]throws);
 
         private static readonly Tuple<int, Scoring> SimpleScoring = new Tuple<int, Scoring>
-            (StepFrame, (ptr, game) => game._rolls[ptr] + game._rolls[ptr + 1]);
+            (StepFrame, (ptr, throws) => throws[ptr] + throws[ptr + 1]);
 
         private static readonly Tuple<int, Scoring> SpareScoring = new Tuple<int, Scoring>
-            (StepFrame, (ptr, game) => AllPins + game._rolls[ptr + 2]);
+            (StepFrame, (ptr, throws) => AllPins + throws[ptr + 2]);
 
         private static readonly Tuple<int, Scoring> StrikeScoring = new Tuple<int, Scoring>
-            (StepOneThrow, (ptr, game) => AllPins + game._rolls[ptr + 1] + game._rolls[ptr + 2]);
+            (StepOneThrow, (ptr, throws) => AllPins + throws[ptr + 1] + throws[ptr + 2]);
 
-        private int[] _rolls = new int[0];
+        private int _score;
 
-        public void Game(int[] gamePoints)
-        {
-            _rolls = gamePoints;
-        }
-
-        public int Score()
+        public void Game(int[] throws)
         {
             int score = 0;
             for (int frame = 0, ptrRoll = 0; frame < Frames; frame++)
             {
-                Tuple<int, Scoring> scoring = Factory(ptrRoll);
-                score += scoring.Item2(ptrRoll, this);
+                Tuple<int, Scoring> scoring = Factory(ptrRoll, throws);
+                score += scoring.Item2(ptrRoll, throws);
                 ptrRoll += scoring.Item1;
             }
 
-            return score;
+            _score = score;
         }
 
-        private Tuple<int, Scoring> Factory(int ptr)
+        public int Score()
         {
-            if (IsStrike(ptr)) return StrikeScoring;
-            if (IsSpare(ptr)) return SpareScoring;
+            return _score;
+        }
+
+        private Tuple<int, Scoring> Factory(int ptr, int[] throws)
+        {
+            if (IsStrike(ptr, throws)) return StrikeScoring;
+            if (IsSpare(ptr, throws)) return SpareScoring;
 
             return SimpleScoring;
         }
 
-        private bool IsStrike(int ptrRoll) => AllPins == _rolls[ptrRoll];
+        private bool IsStrike(int ptrRoll, int[] throws) => AllPins == throws[ptrRoll];
 
-        private bool IsSpare(int ptrRoll) => AllPins == _rolls[ptrRoll] + _rolls[ptrRoll];
+        private bool IsSpare(int ptrRoll, int[] throws) => AllPins == throws[ptrRoll] + throws[ptrRoll];
     }
 }
