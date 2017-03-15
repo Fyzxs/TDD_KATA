@@ -18,10 +18,8 @@ namespace BowlingGame7
 
         private static readonly Tuple<int, Scoring> StrikeScoring = new Tuple<int, Scoring>
             (StepOneThrow, (ptr, throws) => AllPins + throws[ptr + 1] + throws[ptr + 2]);
-
-        private int _score;
-
-        public int InternalScore(int[] throws)
+        
+        private int InternalScore(int[] throws)
         {
             int score = 0;
             for (int frame = 0, ptrRoll = 0; frame < Frames; frame++)
@@ -30,13 +28,7 @@ namespace BowlingGame7
                 score += scoring.Item2(ptrRoll, throws);
                 ptrRoll += scoring.Item1;
             }
-
-            _score = score;
-        }
-
-        public int Score()
-        {
-            return _score;
+            return score;
         }
 
         private Tuple<int, Scoring> Factory(int ptr, int[] throws)
@@ -53,7 +45,7 @@ namespace BowlingGame7
 
         public int Score(int[] values)
         {
-            throw new NotImplementedException();
+            return InternalScore(values);
         }
     }
 }

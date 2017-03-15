@@ -53,7 +53,7 @@
     <Compile Include="BowlingGameTests.cs" />
     <Compile Include="BowlingGame.cs" />
     <Compile Include="BlackjackGameTests.cs" />
-    <Compile Include="GameScoring.cs" />
+    <Compile Include="GameScoringTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
