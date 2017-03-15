@@ -1,16 +1,15 @@
-using System;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace BowlingGame5
+namespace BowlingGame7
 {
-    public class Game
+    public class BowlingGame
     {
         private const int StepOneThrow = 1;
         private const int StepFrame = 2;
         private const int Frames = 10;
         private const int AllPins = 10;
         private const int MaxThrows = 21;
-        private delegate int Scoring(int ptr, Game game);
+        private delegate int Scoring(int ptr, BowlingGame game);
 
         private static readonly Tuple<int, Scoring> SimpleScoring = new Tuple<int, Scoring>
             (StepFrame, (ptr, game) => game._rolls[ptr] + game._rolls[ptr + 1]);
@@ -21,10 +20,12 @@ namespace BowlingGame5
         private static readonly Tuple<int, Scoring> StrikeScoring = new Tuple<int, Scoring>
             (StepOneThrow, (ptr, game) => AllPins + game._rolls[ptr + 1] + game._rolls[ptr + 2]);
 
-        private readonly int[] _rolls = new int[MaxThrows];
-        private int _ptrRolls;
+        private int[] _rolls = new int[0];
 
-        public void Roll(int pins) => _rolls[_ptrRolls++] = pins;
+        public void Game(int[] gamePoints)
+        {
+            _rolls = gamePoints;
+        }
 
         public int Score()
         {
