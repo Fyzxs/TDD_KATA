@@ -2,7 +2,7 @@
 
 namespace BowlingGame7
 {
-    public class BowlingGame : GameScoring.IScoreEngine
+    public class BowlingGame : GameScoring.IScoreEngine<int[], int>
     {
         private const int StepOneThrow = 1;
         private const int StepFrame = 2;

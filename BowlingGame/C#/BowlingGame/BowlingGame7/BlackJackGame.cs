@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace BowlingGame7
 {
-    public class BlackJackGame : GameScoring.IScoreEngine
+    public class BlackJackGame : GameScoring.IScoreEngine<int[], int>
     {
         private const int MaxScore = 21;
 
